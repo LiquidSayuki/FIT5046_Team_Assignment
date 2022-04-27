@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_navigation"
+    app:startDestination="@id/nav_home_fragment">
+
+    <fragment
+        android:id="@+id/nav_home_fragment"
+        android:name="com.teamliquid.volksfitness.fragment.HomeFragment"
+        android:label="HomeFragment" />
+
+    <fragment
+        android:id="@+id/nav_calendar_fragment"
+        android:name="com.teamliquid.volksfitness.fragment.CalendarFragment"
+        android:label="HomeFragment" />
+
+    <fragment
+        android:id="@+id/nav_food_intake_fragment"
+        android:name="com.teamliquid.volksfitness.fragment.FoodIntakeFragment"
+        android:label="HomeFragment" />
+
+    <fragment
+        android:id="@+id/nav_report_fragment"
+        android:name="com.teamliquid.volksfitness.fragment.ReportFragment"
+        android:label="HomeFragment" />
+
+</navigation>

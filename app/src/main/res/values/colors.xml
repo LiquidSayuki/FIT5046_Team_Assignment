@@ -11,4 +11,5 @@
     <color name="deep_white">#D0D0D0</color>
     <color name="text_on_dark_bg">#ECECEC</color>
     <color name="blue_button">#1C77FF</color>
+    <color name="background">#F5F5F5</color>
 </resources>
