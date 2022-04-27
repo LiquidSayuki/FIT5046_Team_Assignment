@@ -15,14 +15,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="top"/>
+
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="@string/Login"
-            android:textColor="@color/deep_white"
+            android:text="@string/app_name"
+            android:textColor="@color/light_black"
             android:textSize="40sp"
             android:textStyle="bold" />
 
@@ -67,9 +73,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:text="Forgot Password?"
-            android:textColor="@color/deep_white"/>
+            android:textColor="@color/white"/>
 
         <Button
             style="@style/Widget.Material3.Button"
@@ -81,24 +87,12 @@
             app:strokeColor="@color/light_black"
             app:strokeWidth="1px" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="Do not have an account?"
-                android:textColor="@color/deep_white"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="Register!"
-                android:textColor="@color/deep_white"/>
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Do not have an account? Register"
+            android:layout_gravity="end"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 
