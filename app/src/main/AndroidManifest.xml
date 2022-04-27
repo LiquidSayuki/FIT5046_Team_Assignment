@@ -22,6 +22,14 @@
         <activity android:name=".LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name=".RegisterActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name=".HomeActivity"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

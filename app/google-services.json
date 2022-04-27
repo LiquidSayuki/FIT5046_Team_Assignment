@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "688759720455",
+    "project_id": "fit5046-a61f5",
+    "storage_bucket": "fit5046-a61f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688759720455:android:c091738b774f931df6b8a2",
+        "android_client_info": {
+          "package_name": "com.liquid.tutorial3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688759720455-e92e56hl6qq431pjk0hvpjegu777qsin.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbxwkHojkPs9x8c6JSz-6I95Okem4CWaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688759720455-e92e56hl6qq431pjk0hvpjegu777qsin.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688759720455:android:36bc674b3faa6f29f6b8a2",
+        "android_client_info": {
+          "package_name": "com.teamliquid.volksfitness"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "688759720455-e92e56hl6qq431pjk0hvpjegu777qsin.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbxwkHojkPs9x8c6JSz-6I95Okem4CWaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "688759720455-e92e56hl6qq431pjk0hvpjegu777qsin.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
