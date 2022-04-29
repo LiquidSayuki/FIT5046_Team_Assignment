@@ -45,7 +45,5 @@ public class HomeActivity extends AppCompatActivity {
         //Sets up a Toolbar for use with a NavController.
         NavigationUI.setupWithNavController(binding.appBarHome,navController,mAppBarConfiguration);
 
-
-
     }
 }

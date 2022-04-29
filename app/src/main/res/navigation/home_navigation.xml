@@ -7,21 +7,21 @@
     <fragment
         android:id="@+id/nav_home_fragment"
         android:name="com.teamliquid.volksfitness.fragment.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="Home" />
 
     <fragment
         android:id="@+id/nav_calendar_fragment"
         android:name="com.teamliquid.volksfitness.fragment.CalendarFragment"
-        android:label="HomeFragment" />
+        android:label="Training Calendar" />
 
     <fragment
         android:id="@+id/nav_food_intake_fragment"
         android:name="com.teamliquid.volksfitness.fragment.FoodIntakeFragment"
-        android:label="HomeFragment" />
+        android:label="Food Intake" />
 
     <fragment
         android:id="@+id/nav_report_fragment"
         android:name="com.teamliquid.volksfitness.fragment.ReportFragment"
-        android:label="HomeFragment" />
+        android:label="Training Report" />
 
 </navigation>
