@@ -17,11 +17,20 @@
     <fragment
         android:id="@+id/nav_food_intake_fragment"
         android:name="com.teamliquid.volksfitness.fragment.FoodIntakeFragment"
-        android:label="Food Intake" />
+        android:label="Food Intake" >
+        <action
+            android:id="@+id/action_nav_food_intake_fragment_to_nav_add_meal_fragment"
+            app:destination="@id/nav_add_meal_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_report_fragment"
         android:name="com.teamliquid.volksfitness.fragment.ReportFragment"
         android:label="Training Report" />
+
+    <fragment
+        android:id="@+id/nav_add_meal_fragment"
+        android:name="com.teamliquid.volksfitness.fragment.AddMealFragment"
+        android:label="Adding new meal" />
 
 </navigation>

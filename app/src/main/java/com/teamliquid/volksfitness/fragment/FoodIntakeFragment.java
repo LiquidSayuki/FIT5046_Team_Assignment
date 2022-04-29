@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,11 +11,13 @@ import androidx.fragment.app.Fragment;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.teamliquid.volksfitness.R;
 import com.teamliquid.volksfitness.adapter.MealAdapter;
 import com.teamliquid.volksfitness.databinding.FragmentFoodIntakeBinding;
 import com.teamliquid.volksfitness.pojo.Meal;
@@ -46,7 +47,6 @@ public class FoodIntakeFragment extends Fragment {
         mealViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(MealViewModel.class);
 
 
-
         //List<Meal> mealList = mealViewModel.getAllMeals().getValue();
         List<Meal> mealList = new ArrayList<>();
         mealList.add(new Meal("Demo","Demo",100));
@@ -74,17 +74,7 @@ public class FoodIntakeFragment extends Fragment {
             }
         });
 
-        binding.floatAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Meal meal = new Meal("Demo","Demo",100);
-                mealViewModel.insert(meal);
-            }
-        });
-
-
-
-
+        binding.floatAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_add_meal_fragment,null));
 
         return view;
     }
