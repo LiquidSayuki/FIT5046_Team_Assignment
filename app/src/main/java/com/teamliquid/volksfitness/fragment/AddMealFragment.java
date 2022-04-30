@@ -1,20 +1,28 @@
 package com.teamliquid.volksfitness.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.slider.Slider;
+import com.teamliquid.volksfitness.R;
 import com.teamliquid.volksfitness.databinding.FragmentAddMealBinding;
 import com.teamliquid.volksfitness.pojo.Meal;
 import com.teamliquid.volksfitness.viewmodel.MealViewModel;
@@ -36,7 +44,10 @@ public class AddMealFragment extends Fragment {
         binding.buttonAddMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addMeal();
+                if (addMeal()){
+                    Navigation.findNavController(view).navigate(R.id.nav_food_intake_fragment);
+                }
+
             }
         });
 
@@ -89,7 +100,7 @@ public class AddMealFragment extends Fragment {
         return !isNull;
     }
 
-    private void addMeal(){
+    private boolean addMeal(){
         if (checkDish()){
             int chipID = binding.chipGroup.getCheckedChipId();
             Chip chip = binding.chipGroup.findViewById(chipID);
@@ -100,7 +111,33 @@ public class AddMealFragment extends Fragment {
             int calories = Integer.parseInt(binding.editTextCalorie.getText().toString());
             Meal meal = new Meal(mealType,mealFood,calories);
             mealViewModel.insert(meal);
+
+            showDiyToast(getContext(),"New meal added",R.drawable.ic_baseline_check_circle_24);
+
+            return true;
+        }else {
+            showDiyToast(getContext(),"Adding Meal Failed",R.drawable.ic_baseline_cancel_24);
+            return false;
         }
+    }
+
+    // https://blog.csdn.net/yinzhijiezhan/article/details/100892184
+    // Thanks for "yzjgogo" providing the idea of diy toast
+    // And I make it more diy-able.
+    private void showDiyToast(Context context,String content,int imageId){
+        Toast toast = new Toast(context);
+        toast.setDuration(Toast.LENGTH_LONG);
+        View layout = View.inflate(context,R.layout.toast_layout,null);
+
+        ImageView imageView = layout.findViewById(R.id.image_toast);
+        imageView.setImageResource(imageId);
+
+        TextView textView = layout.findViewById(R.id.text_toast);
+        textView.setText(content);
+
+        toast.setView(layout);
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
     }
 
 }
