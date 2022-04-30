@@ -1,9 +1,13 @@
 package com.teamliquid.volksfitness;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +38,15 @@ public class RegisterActivity extends AppCompatActivity {
             public void onFocusChange(View view, boolean b) {
                 if (!b){
                     validateEmail();
+                }
+            }
+        });
+
+        binding.textInputPassword.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (!b){
+                    validPassword();
                 }
             }
         });
@@ -77,6 +90,25 @@ public class RegisterActivity extends AppCompatActivity {
         return isEmail;
     }
 
+    private boolean validPassword(){
+
+        String regex = "^(?![A-Za-z]+$)(?![A-Z0-9]+$)(?![a-z0-9]+$)(?![a-z\\W]+$)(?![A-Z\\W]+$)(?![0-9\\W]+$)[a-zA-Z0-9\\W]{8,16}$";
+        String password = binding.textInputPassword.getEditText().getText().toString();
+        if (password.matches(regex)){
+            binding.textInputPassword.setErrorEnabled(false);
+            return true;
+        }else {
+            binding.textInputPassword.setError("Password not valid");
+            showDiyToast(RegisterActivity.this,"Password should contain 3 of: \n" +
+                    "UPPERCASE letter \n" +
+                    "lowercase letter \n" +
+                    "Special character \n" +
+                    "Number",R.drawable.ic_baseline_cancel_24);
+            return false;
+        }
+
+    }
+
     private boolean validateRepeatPassword (){
         String password = binding.textInputPassword.getEditText().getText().toString();
         String repeatPassword = binding.textInputRepeatPassword.getEditText().getText().toString();
@@ -90,9 +122,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void register(){
-        if (validateEmail() && validateRepeatPassword()){
+        if (validateEmail() && validateRepeatPassword() && validPassword()){
             String email = binding.textInputEmail.getEditText().getText().toString();
             String password = binding.textInputPassword.getEditText().getText().toString();
+
 
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -114,5 +147,21 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     });
         }
+    }
+
+    private void showDiyToast(Context context, String content, int imageId){
+        Toast toast = new Toast(context);
+        toast.setDuration(Toast.LENGTH_LONG);
+        View layout = View.inflate(context,R.layout.toast_layout,null);
+
+        ImageView imageView = layout.findViewById(R.id.image_toast);
+        imageView.setImageResource(imageId);
+
+        TextView textView = layout.findViewById(R.id.text_toast);
+        textView.setText(content);
+
+        toast.setView(layout);
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
     }
 }

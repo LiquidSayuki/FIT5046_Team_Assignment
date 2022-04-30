@@ -1,9 +1,13 @@
 package com.teamliquid.volksfitness;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -57,24 +61,27 @@ public class LoginActivity extends AppCompatActivity {
         String email = binding.textInputEmail.getEditText().getText().toString();
         String password = binding.textInputPassword.getEditText().getText().toString();
 
-        //Use email and password to login
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("Success", "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            startHomeActivity();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("Fail","signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_LONG).show();
+        if (!email.isEmpty() && !password.isEmpty()){
+            //Use email and password to login
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                showDiyToast(LoginActivity.this,"Login Successful",R.drawable.ic_baseline_check_circle_24);
+                                // Sign in success, update UI with the signed-in user's information
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                startHomeActivity();
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                showDiyToast(LoginActivity.this,"Login Failed \n Please check email and password",R.drawable.ic_baseline_cancel_24);
+                            }
                         }
-                    }
-                });
+                    });
+        }else {
+            showDiyToast(LoginActivity.this,"Email and Password can't be empty",R.drawable.ic_baseline_cancel_24);
+        }
+
     }
 
     private void startHomeActivity(){
@@ -85,5 +92,21 @@ public class LoginActivity extends AppCompatActivity {
     private void startRegisterActivity(){
         Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
         startActivity(intent);
+    }
+
+    private void showDiyToast(Context context, String content, int imageId){
+        Toast toast = new Toast(context);
+        toast.setDuration(Toast.LENGTH_LONG);
+        View layout = View.inflate(context,R.layout.toast_layout,null);
+
+        ImageView imageView = layout.findViewById(R.id.image_toast);
+        imageView.setImageResource(imageId);
+
+        TextView textView = layout.findViewById(R.id.text_toast);
+        textView.setText(content);
+
+        toast.setView(layout);
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
     }
 }
