@@ -19,7 +19,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.teamliquid.volksfitness.databinding.ActivityRegisterBinding;
+import com.teamliquid.volksfitness.pojo.User;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     private ActivityRegisterBinding binding;
@@ -156,6 +162,20 @@ public class RegisterActivity extends AppCompatActivity {
                                         }
                                     }
                                 });
+
+                                // Create a new empty profile of the user in firebase
+                                FirebaseDatabase database = FirebaseDatabase.getInstance("https://fit5046-a61f5-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                                DatabaseReference reference = database.getReference("User");
+                                // get user profile
+                                String uid = user.getUid();
+                                String name = user.getDisplayName();
+                                String email = user.getEmail();
+                                // create user map
+                                User userObj = new User(uid,name,email,"Prefer not to say", 0, 0, 0);
+                                Map<String,User> userMap = new HashMap<>();
+                                userMap.put(uid,userObj);
+                                // upload to database
+                                reference.setValue(userMap);
 
                                 finish();
                             } else {

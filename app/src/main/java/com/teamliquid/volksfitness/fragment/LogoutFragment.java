@@ -24,6 +24,7 @@ public class LogoutFragment extends Fragment {
         View view = binding.getRoot();
 
         FirebaseAuth.getInstance().signOut();
+        getActivity().finish();
 
         return view;
     }
