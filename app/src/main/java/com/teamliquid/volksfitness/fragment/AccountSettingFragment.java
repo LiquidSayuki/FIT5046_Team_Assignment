@@ -63,7 +63,7 @@ public class AccountSettingFragment extends Fragment {
             binding.buttonUserinfo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), name+email+photoUrl, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), name+email, Toast.LENGTH_SHORT).show();
                 }
             });
 
