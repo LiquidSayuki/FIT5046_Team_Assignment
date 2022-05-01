@@ -12,4 +12,19 @@
     <string name="new_message">New Messages</string>
     <string name="logout">Log out</string>
     <string name="Calories">Calories</string>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Prefer not to say</item>
+    </string-array>
+
+    <string-array name="weight">
+        <item>kgs</item>
+        <item>lbs</item>
+    </string-array>
+
+    <string-array name="height">
+        <item>cms</item>
+        <item>ins</item>
+    </string-array>
 </resources>
