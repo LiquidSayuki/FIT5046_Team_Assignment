@@ -172,10 +172,10 @@ public class RegisterActivity extends AppCompatActivity {
                                 String email = user.getEmail();
                                 // create user map
                                 User userObj = new User(uid,name,email,"Prefer not to say", 0, 0, 0);
-                                Map<String,User> userMap = new HashMap<>();
+                                Map<String,Object> userMap = new HashMap<>();
                                 userMap.put(uid,userObj);
                                 // upload to database
-                                reference.setValue(userMap);
+                                reference.updateChildren(userMap);
 
                                 finish();
                             } else {

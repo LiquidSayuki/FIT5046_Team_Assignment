@@ -105,10 +105,10 @@ public class AccountSettingFragment extends Fragment {
                                 Integer.parseInt(ageString),
                                 Integer.parseInt(heightString),
                                 Integer.parseInt(weightString));
-                        Map<String,User> userMap = new HashMap<>();
+                        Map<String,Object> userMap = new HashMap<>();
                         userMap.put(uid,userObj);
 
-                        reference.setValue(userMap);
+                        reference.updateChildren(userMap);
 
                         showDiyToast(getContext(),"Change profile success",R.drawable.ic_baseline_check_circle_24);
                         // Fragment navigation template
