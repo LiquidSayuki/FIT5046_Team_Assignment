@@ -14,4 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus">true</item>
     </style>
+
+    <style name="whatever" parent="android:Widget.Material.DatePicker">
+    <item name="colorPrimary">#ff5555</item>
+</style>
 </resources>
