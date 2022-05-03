@@ -33,6 +33,8 @@ import java.util.Map;
 public class AccountSettingFragment extends Fragment {
     private FragmentAccountSettingBinding binding;
 
+    ArrayAdapter adapter;
+
     public AccountSettingFragment (){}
 
     @Nullable
@@ -61,11 +63,9 @@ public class AccountSettingFragment extends Fragment {
             binding.textUsername.setText(name);
             binding.textEmail.setText(email);
 
-            // Initialize the gender drop down menu
             String[] genderArray = getResources().getStringArray(R.array.gender);
-            ArrayAdapter adapter = new ArrayAdapter(getContext(),R.layout.item_dropdown,genderArray);
+            adapter = new ArrayAdapter(getContext(),R.layout.item_dropdown,genderArray);
             adapter.setDropDownViewResource(R.layout.item_dropdown);
-            binding.autoCompleteGender.setAdapter(adapter);
 
 
             reference.child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -130,6 +130,23 @@ public class AccountSettingFragment extends Fragment {
         }
         return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        binding.autoCompleteGender.setAdapter(adapter);
+    }
+
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Initialize the gender drop down menu
+        binding.autoCompleteGender.setAdapter(adapter);
+    }
+
     private void showDiyToast(Context context, String content, int imageId){
         Toast toast = new Toast(context);
         toast.setDuration(Toast.LENGTH_SHORT);

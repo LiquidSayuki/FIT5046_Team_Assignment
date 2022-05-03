@@ -28,13 +28,16 @@ public class ReportFragment extends Fragment {
         binding  = FragmentReportBinding.inflate(inflater,container,false);
         View view = binding.getRoot();
 
-        // This is single date picker
-        // DialogFragment newFragment = new DatePickerFragment();
-        // newFragment.show(getActivity().getSupportFragmentManager(),"date picker");
+        // This is single date pickerØ
+//        MaterialDatePicker picker = MaterialDatePicker.Builder.datePicker()
+//                .setTitleText("Select dates")
+//                .build();
+//        picker.show(getActivity().getSupportFragmentManager(), picker.toString());
 
         // This is date range picker
         MaterialDatePicker picker = MaterialDatePicker.Builder.dateRangePicker()
                 .setTitleText("Select dates")
+                .setTheme(com.google.android.material.R.style.ThemeOverlay_Material3_MaterialCalendar)
                 .build();
         picker.show(getActivity().getSupportFragmentManager(), picker.toString());
 
