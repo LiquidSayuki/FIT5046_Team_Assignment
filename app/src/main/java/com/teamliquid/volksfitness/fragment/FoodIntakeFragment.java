@@ -49,7 +49,7 @@ public class FoodIntakeFragment extends Fragment {
 
         //List<Meal> mealList = mealViewModel.getAllMeals().getValue();
         List<Meal> mealList = new ArrayList<>();
-        mealList.add(new Meal("Demo","Demo",100));
+        mealList.add(new Meal("Demo","Demo",100,88888888));
         // Make recycler view usable
         // get Activity in Fragment, this in Activity.
         adapter = new MealAdapter(getActivity(),mealList);

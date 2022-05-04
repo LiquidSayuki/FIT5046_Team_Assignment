@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,10 +29,15 @@ public class Meal {
     @NonNull
     public int mealCalories;
 
-    public Meal(@NonNull String mealType, @NonNull String mealFood, int mealCalories) {
+    @ColumnInfo(name = "meal_time")
+    @NotNull
+    public long mealTime;
+
+    public Meal(@NonNull String mealType, @NonNull String mealFood, int mealCalories, long mealTime) {
         this.mealType = mealType;
         this.mealFood = mealFood;
         this.mealCalories = mealCalories;
+        this.mealTime = mealTime;
     }
 
     public int getUid() {
@@ -39,6 +46,14 @@ public class Meal {
 
     public void setUid(int uid) {
         this.uid = uid;
+    }
+
+    public long getMealTime() {
+        return mealTime;
+    }
+
+    public void setMealTime(long mealTime) {
+        this.mealTime = mealTime;
     }
 
     @NonNull

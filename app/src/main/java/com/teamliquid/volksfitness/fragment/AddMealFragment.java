@@ -46,16 +46,22 @@ public class AddMealFragment extends Fragment {
 
         mealViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(MealViewModel.class);
 
+        // Initialization the Date picker.
+        MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select date")
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .setInputMode(MaterialDatePicker.INPUT_MODE_TEXT)
+                .build();
+
         binding.buttonAddMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (addMeal()){
+                if (addMeal(datePicker.getSelection().toString())){
                     Navigation.findNavController(view).navigate(R.id.nav_food_intake_fragment);
                 }
 
             }
         });
-
 
 //        binding.editTextCalorie.addTextChangedListener(new TextWatcher() {
 //            @Override
@@ -94,9 +100,7 @@ public class AddMealFragment extends Fragment {
             @SuppressLint("RestrictedApi")
             @Override
             public void onStartTrackingTouch(@NonNull Slider slider) {
-
             }
-
             @SuppressLint("RestrictedApi")
             @Override
             public void onStopTrackingTouch(@NonNull Slider slider) {
@@ -105,17 +109,14 @@ public class AddMealFragment extends Fragment {
             }
         });
 
+
+        // Date selection
         binding.buttonSelectDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // This is single date picker
 //                DialogFragment newFragment = new DatePickerFragment();
 //                newFragment.show(getActivity().getSupportFragmentManager(),"date picker");
-                MaterialDatePicker datePicker = MaterialDatePicker.Builder.datePicker()
-                        .setTitleText("Select date")
-                        .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-                        .setInputMode(MaterialDatePicker.INPUT_MODE_TEXT)
-                        .build();
                 datePicker.show(getActivity().getSupportFragmentManager(), "date picker");
                 datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
                     @Override public void onPositiveButtonClick(Long selection) {
@@ -127,6 +128,8 @@ public class AddMealFragment extends Fragment {
                 });
             }
         });
+
+
 
         return view;
     }
@@ -145,16 +148,20 @@ public class AddMealFragment extends Fragment {
 
 
 
-    private boolean addMeal(){
-        if (checkDish()){
+    private boolean addMeal(String time){
+        if (checkDish() && Long.parseLong(time) <= MaterialDatePicker.todayInUtcMilliseconds()){
+            // Get meal type
             int chipID = binding.chipGroup.getCheckedChipId();
             Chip chip = binding.chipGroup.findViewById(chipID);
             String mealType = chip.getText().toString();
+            // Get food
             String mealFood = binding.textInputFood.getEditText().getText().toString() + "\n" +
                     binding.textInputDrink.getEditText().getText().toString() + "\n" +
                     binding.textInputDessert.getEditText().getText().toString();
+            // get calorie
             int calories = Integer.parseInt(binding.editTextCalorie.getText().toString());
-            Meal meal = new Meal(mealType,mealFood,calories);
+
+            Meal meal = new Meal(mealType,mealFood,calories,Long.parseLong(time));
             mealViewModel.insert(meal);
 
             showDiyToast(getContext(),"New meal added",R.drawable.ic_baseline_check_circle_24);
