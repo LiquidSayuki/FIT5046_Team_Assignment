@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.teamliquid.volksfitness.R;
 import com.teamliquid.volksfitness.pojo.Meal;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,9 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
         viewHolder.mealType.setText(meal.getMealType());
         viewHolder.foodRecord.setText(meal.getMealFood());
         viewHolder.calories.setText(String.valueOf(meal.getMealCalories()));
+
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        viewHolder.mealDate.setText(formatter.format(meal.getMealTime()));
 
         if (onItemClickListener!=null){
             viewHolder.imageDelete.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +110,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
         private final TextView foodRecord;
         private final TextView calories;
         private final ImageView imageDelete;
+        private final TextView mealDate;
 
         public ViewHolder(View view){
             super(view);
@@ -113,6 +119,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.ViewHolder> {
             foodRecord = itemView.findViewById(R.id.text_food_record);
             calories = itemView.findViewById(R.id.text_calories);
             imageDelete = itemView.findViewById(R.id.image_delete);
+            mealDate = itemView.findViewById(R.id.text_date);
         }
     }
 }

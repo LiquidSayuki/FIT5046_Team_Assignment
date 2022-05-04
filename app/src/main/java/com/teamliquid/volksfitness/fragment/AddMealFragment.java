@@ -31,6 +31,7 @@ import com.teamliquid.volksfitness.viewmodel.MealViewModel;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AddMealFragment extends Fragment {
     private FragmentAddMealBinding binding;
@@ -52,6 +53,11 @@ public class AddMealFragment extends Fragment {
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .setInputMode(MaterialDatePicker.INPUT_MODE_TEXT)
                 .build();
+
+        // Show current date when use haven't select a date.
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String date = formatter.format(datePicker.getSelection());
+        binding.textDate.setText(date);
 
         binding.buttonAddMeal.setOnClickListener(new View.OnClickListener() {
             @Override

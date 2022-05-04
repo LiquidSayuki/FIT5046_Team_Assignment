@@ -37,6 +37,9 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.712171052631579" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_add_meal.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_food_intake.xml" value="0.10638297872340426" />
+        <entry key="app/src/main/res/layout/item_food_recycler_view.xml" value="0.20081967213114754" />
       </map>
     </option>
   </component>
