@@ -12,6 +12,7 @@
     <string name="new_message">New Messages</string>
     <string name="logout">Log out</string>
     <string name="Calories">Calories</string>
+    <string name="weather_api_key">23a4c44d5c8a241857d91d4cdcad3269</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
