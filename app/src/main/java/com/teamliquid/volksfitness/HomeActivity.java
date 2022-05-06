@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.teamliquid.volksfitness.databinding.ActivityHomeBinding;
 import com.teamliquid.volksfitness.databinding.ActivityMainBinding;
 
@@ -63,6 +65,21 @@ public class HomeActivity extends AppCompatActivity {
 //                return false;
 //            }
 //        });
+
+        // Set the username and email at the navigation header
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user != null){
+            String nameString = user.getDisplayName();
+            String emailString = user.getEmail();
+
+            View header = binding.navigationView.getHeaderView(0);
+            TextView usernameTV = header.findViewById(R.id.text_username_in_header);
+            TextView emailTV = header.findViewById(R.id.text_email_in_header);
+            usernameTV.setText(nameString);
+            emailTV.setText(emailString);
+        }
+
+
 
 
     }
