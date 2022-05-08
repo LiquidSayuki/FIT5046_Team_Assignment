@@ -14,7 +14,7 @@
     <string name="Calories">Calories</string>
 
     <string name="weather_api_key">23a4c44d5c8a241857d91d4cdcad3269</string>
-    <string name="mapbox_access_token"> PASTE_YOUR_MAPBOX_ACCESS_TOKEN</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoibGlxdWlkc2F5dWtpIiwiYSI6ImNsMWRjaGZxNjA3Y20zY3BtZjNyOG4xY20ifQ.hwghlX6iUmoMjQs7m5-1cg</string>
 
     <string-array name="gender">
         <item>Male</item>
