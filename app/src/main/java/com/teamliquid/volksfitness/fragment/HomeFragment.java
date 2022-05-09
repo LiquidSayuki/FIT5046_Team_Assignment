@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.squareup.picasso.Picasso;
 import com.teamliquid.volksfitness.R;
@@ -85,6 +86,10 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+        // Map navigation
+        binding.cardRunning.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_map_fragment,null));
+
         return view;
     }
 //    private Bitmap getImageBitmap(String url) {
