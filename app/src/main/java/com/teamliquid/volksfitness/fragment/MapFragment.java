@@ -89,6 +89,7 @@ public class MapFragment extends Fragment {
 
     @SuppressLint("MissingPermission")
     private void refreshMapLocation(){
+        // get current location, as the function name
         fusedLocationClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, new CancellationToken() {
             @NonNull
             @Override
