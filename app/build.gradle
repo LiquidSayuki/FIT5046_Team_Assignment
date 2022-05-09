@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.teamliquid.volksfitness"
-        minSdk 22
+        minSdk 24
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -72,7 +72,10 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     //Mapbox
-    implementation ('com.mapbox.maps:android:10.4.0'){
+    implementation ('com.mapbox.maps:android:10.5.0'){
         exclude group: 'group_name', module: 'module_name'
     }
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-core:5.0.1'
+    implementation "com.mapbox.navigation:ui-dropin:2.5.0-beta.3"
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
 }
