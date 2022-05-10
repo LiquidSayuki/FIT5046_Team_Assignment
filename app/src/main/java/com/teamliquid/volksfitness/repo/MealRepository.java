@@ -26,6 +26,8 @@ public class MealRepository {
         return allMeals;
     }
 
+    public List<Meal> getMealList() { return mealDao.getMealList(); }
+
     //insert one
     public void insert(final Meal meal) {
         MealDatabase.databaseWriteExecutor.execute(new Runnable() {

@@ -28,8 +28,7 @@
             <ImageView
                 android:id="@+id/weather_icon"
                 android:layout_width="165dp"
-                android:layout_height="165dp"
-                android:src="@mipmap/ic_launcher" />
+                android:layout_height="165dp" />
 
             <TextView
                 android:id="@+id/text_home"

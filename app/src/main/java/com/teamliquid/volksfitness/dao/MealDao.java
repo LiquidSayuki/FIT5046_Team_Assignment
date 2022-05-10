@@ -12,8 +12,11 @@ import java.util.List;
 
 @Dao
 public interface MealDao {
-    @Query("SELECT * FROM meal_table ORDER BY meal_time DESC")
+    @Query("SELECT * FROM meal_table ORDER BY meal_time ASC")
     LiveData<List<Meal>> getAllMeals();
+
+    @Query("SELECT * FROM meal_table ORDER BY meal_time ASC")
+    List<Meal> getMealList();
 
     @Insert
     void insert(Meal meal);

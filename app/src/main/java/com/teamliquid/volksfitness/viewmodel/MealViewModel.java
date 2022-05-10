@@ -24,6 +24,8 @@ public class MealViewModel extends AndroidViewModel {
         return allMeals;
     }
 
+    public List<Meal> getMealList() { return mRepository.getMealList(); }
+
     public void insert(Meal meal){
         mRepository.insert(meal);
     }
