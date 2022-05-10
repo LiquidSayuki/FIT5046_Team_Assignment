@@ -20,6 +20,7 @@
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_food_intake.xml" value="0.2328125" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_home.xml" value="0.2328125" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_logout.xml" value="0.873546511627907" />
+        <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_map.xml" value="0.2234375" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_report.xml" value="0.2328125" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/layout/header_home_drawer.xml" value="0.2328125" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/layout/item_dropdown.xml" value="0.27219202898550726" />
@@ -31,20 +32,13 @@
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/menu/menu_home_nav_drawer.xml" value="0.2328125" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/menu/top_app_bar.xml" value="0.2328125" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1385" />
+        <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.149" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_outline_logout_24.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/loading_background.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.2159659134714227" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.712171052631579" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_add_meal.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_food_intake.xml" value="0.10638297872340426" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.21862469086651865" />
-        <entry key="app/src/main/res/layout/fragment_report.xml" value="0.10659637451171876" />
-        <entry key="app/src/main/res/layout/item_food_recycler_view.xml" value="0.20081967213114754" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.107" />
       </map>
     </option>
   </component>
