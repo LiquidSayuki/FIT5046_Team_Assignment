@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import com.teamliquid.volksfitness.HomeActivity;
 import com.teamliquid.volksfitness.R;
 import com.teamliquid.volksfitness.databinding.FragmentCalendarBinding;
 
@@ -28,17 +30,8 @@ public class CalendarFragment extends Fragment {
         binding  = FragmentCalendarBinding.inflate(inflater,container,false);
         View view = binding.getRoot();
 
-        binding.calenderButton.setOnClickListener( v ->{
-            Calendar cal = Calendar.getInstance();
-            Intent intent = new Intent(Intent.ACTION_EDIT);
-            intent.setType("vnd.android.cursor.item/event");
-            intent.putExtra("beginTime", cal.getTimeInMillis());
-            intent.putExtra("allDay", true);
-            intent.putExtra("rrule","FREQ=DAILY");
-            intent.putExtra("endTime",cal.getTimeInMillis() + 60*60*1000);
-            intent.putExtra("title","test-event");
-            startActivity(intent);
-        });
+        binding.calenderButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_add_calendar_fragment));
+
 
         return view;
     }
