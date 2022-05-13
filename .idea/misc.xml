@@ -3,21 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_calendar.xml" value="0.24954710144927536" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.2985" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/fragment_add_calendar.xml" value="0.4282238442822384" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/fragment_add_calender.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/fragment_add_meal.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/fragment_calendar.xml" value="0.23232323232323232" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/fragment_food_intake.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/fragment_logout.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/fragment_report.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment-test/app/src/main/res/layout/item_food_recycler_view.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_calendar.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_food_intake.xml" value="0.36666666666666664" />
-        <entry key="..\:/New folder/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.155" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/drawable/common_background.xml" value="0.155" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.155" />

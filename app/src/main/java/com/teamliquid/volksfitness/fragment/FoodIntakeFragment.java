@@ -16,15 +16,24 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.Data;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
+import com.google.gson.Gson;
 import com.teamliquid.volksfitness.R;
+import com.teamliquid.volksfitness.UploadDataToFirebaseDatabase;
 import com.teamliquid.volksfitness.adapter.MealAdapter;
 import com.teamliquid.volksfitness.databinding.FragmentFoodIntakeBinding;
 import com.teamliquid.volksfitness.pojo.Meal;
 import com.teamliquid.volksfitness.viewmodel.MealViewModel;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class FoodIntakeFragment extends Fragment {
     private FragmentFoodIntakeBinding binding;
@@ -73,6 +82,30 @@ public class FoodIntakeFragment extends Fragment {
                 mealViewModel.delete(adapter.getCurrentMeal(position));
             }
         });
+
+        List<Meal> mMealList = mealViewModel.getMealList();
+        Map<String,Meal> mealMap = new HashMap<>();
+        for(Meal meal : mMealList)
+        {
+            mealMap.put(String.valueOf(meal.getUid()),meal);
+        }
+
+        Gson gson = new Gson();
+        String jsonString = gson.toJson(mealMap);
+
+        Data.Builder uploadBuilder = new Data.Builder();
+        Map<String,Object> placeMap = new HashMap<>();
+        placeMap.put("transfer",jsonString);
+        uploadBuilder.putAll(placeMap);
+        Data transferToManager = uploadBuilder.build();
+
+
+        WorkRequest saveRequest =
+                new PeriodicWorkRequest.Builder(UploadDataToFirebaseDatabase.class,
+                        15, TimeUnit.MINUTES)
+                        .setInputData(transferToManager)
+                        .build();
+        WorkManager.getInstance().enqueue(saveRequest);
 
         binding.floatAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_add_meal_fragment,null));
 

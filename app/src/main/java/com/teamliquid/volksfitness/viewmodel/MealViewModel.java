@@ -13,11 +13,19 @@ import java.util.List;
 public class MealViewModel extends AndroidViewModel {
     private MealRepository mRepository;
     private LiveData<List<Meal>> allMeals;
+    private List<Meal> allStudentList;
+
+
 
     public MealViewModel (Application application){
         super(application);
         mRepository = new MealRepository(application);
         allMeals = mRepository.getAllMeals();
+        allStudentList = mRepository.getMealList();
+    }
+
+    public List<Meal> getAllStudentList() {
+        return allStudentList;
     }
 
     public LiveData<List<Meal>> getAllMeals(){
