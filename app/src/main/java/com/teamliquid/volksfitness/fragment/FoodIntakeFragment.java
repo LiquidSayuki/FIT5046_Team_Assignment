@@ -83,31 +83,31 @@ public class FoodIntakeFragment extends Fragment {
             }
         });
 
-        List<Meal> mMealList = mealViewModel.getMealList();
-        Map<String,Meal> mealMap = new HashMap<>();
-        for(Meal meal : mMealList)
-        {
-            mealMap.put(String.valueOf(meal.getUid()),meal);
-        }
-
-        Gson gson = new Gson();
-        String jsonString = gson.toJson(mealMap);
-
-        Data.Builder uploadBuilder = new Data.Builder();
-        Map<String,Object> placeMap = new HashMap<>();
-        placeMap.put("transfer",jsonString);
-        uploadBuilder.putAll(placeMap);
-        Data transferToManager = uploadBuilder.build();
-
-
-        WorkRequest saveRequest =
-                new PeriodicWorkRequest.Builder(UploadDataToFirebaseDatabase.class,
-                        15, TimeUnit.MINUTES)
-                        .setInputData(transferToManager)
-                        .build();
-        WorkManager.getInstance().enqueue(saveRequest);
-
-        binding.floatAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_add_meal_fragment,null));
+//        List<Meal> mMealList = mealViewModel.getMealList();
+//        Map<String,Meal> mealMap = new HashMap<>();
+//        for(Meal meal : mMealList)
+//        {
+//            mealMap.put(String.valueOf(meal.getUid()),meal);
+//        }
+//
+//        Gson gson = new Gson();
+//        String jsonString = gson.toJson(mealMap);
+//
+//        Data.Builder uploadBuilder = new Data.Builder();
+//        Map<String,Object> placeMap = new HashMap<>();
+//        placeMap.put("transfer",jsonString);
+//        uploadBuilder.putAll(placeMap);
+//        Data transferToManager = uploadBuilder.build();
+//
+//
+//        WorkRequest saveRequest =
+//                new PeriodicWorkRequest.Builder(UploadDataToFirebaseDatabase.class,
+//                        15, TimeUnit.MINUTES)
+//                        .setInputData(transferToManager)
+//                        .build();
+//        WorkManager.getInstance().enqueue(saveRequest);
+//
+//        binding.floatAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_add_meal_fragment,null));
 
         return view;
     }
