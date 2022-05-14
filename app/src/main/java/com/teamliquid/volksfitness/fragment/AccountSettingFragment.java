@@ -100,19 +100,23 @@ public class AccountSettingFragment extends Fragment {
                     String ageString = binding.textInputAge.getText().toString();
                     // Not empty
                     if (!genderString.isEmpty() && !heightString.isEmpty() && !weightString.isEmpty() && !ageString.isEmpty()){
-                        // create user object
-                        User userObj = new User(uid,name,email,genderString,
-                                Integer.parseInt(ageString),
-                                Integer.parseInt(heightString),
-                                Integer.parseInt(weightString));
-                        Map<String,Object> userMap = new HashMap<>();
-                        userMap.put(uid,userObj);
+                        if(Integer.parseInt(ageString)>=0 && Integer.parseInt(ageString)<=120 && Integer.parseInt(heightString) >= 50 && Integer.parseInt(heightString)<=250 && Integer.parseInt(weightString) >= 30 && Integer.parseInt(weightString) <= 250){
+                            // create user object
+                            User userObj = new User(uid,name,email,genderString,
+                                    Integer.parseInt(ageString),
+                                    Integer.parseInt(heightString),
+                                    Integer.parseInt(weightString));
+                            Map<String,Object> userMap = new HashMap<>();
+                            userMap.put(uid,userObj);
 
-                        reference.updateChildren(userMap);
+                            reference.updateChildren(userMap);
 
-                        showDiyToast(getContext(),"Change profile success",R.drawable.ic_baseline_check_circle_24);
-                        // Fragment navigation template
-                        Navigation.findNavController(view).navigate(R.id.nav_home_fragment);
+                            showDiyToast(getContext(),"Change profile success",R.drawable.ic_baseline_check_circle_24);
+                            // Fragment navigation template
+                            Navigation.findNavController(view).navigate(R.id.nav_home_fragment);
+                        }else {
+                            showDiyToast(getContext(),"Please check the number of your status",R.drawable.ic_baseline_cancel_24);
+                        }
                     }else {
                         showDiyToast(getContext(),"Your info can't be empty",R.drawable.ic_baseline_cancel_24);
                     }

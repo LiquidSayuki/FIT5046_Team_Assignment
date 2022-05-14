@@ -132,7 +132,6 @@ public class RegisterActivity extends AppCompatActivity {
         if (validateEmail() && validateRepeatPassword() && validPassword()){
             String email = binding.textInputEmail.getEditText().getText().toString();
             String password = binding.textInputPassword.getEditText().getText().toString();
-
             String displayName = binding.textInputUsername.getEditText().getText().toString();
             if (displayName.isEmpty()){
                 displayName = "Anonymous User";
@@ -170,6 +169,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 String uid = user.getUid();
                                 String name = user.getDisplayName();
                                 String email = user.getEmail();
+                                if (name != null && name.isEmpty()) {
+                                    name = "Anonymous User";
+                                }
                                 // create user map
                                 User userObj = new User(uid,name,email,"Prefer not to say", 0, 0, 0);
                                 Map<String,Object> userMap = new HashMap<>();
