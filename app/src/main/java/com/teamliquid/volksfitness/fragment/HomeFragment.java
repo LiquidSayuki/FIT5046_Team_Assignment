@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
                         binding.textHome.setText(String.valueOf((int)temp) + "℃");
                         binding.weatherCondition.setText(weatherCondition);
                         // This idea come from https://www.geeksforgeeks.org/how-to-build-a-weather-app-in-android/
-                        binding.weatherIcon.setImageURI(Uri.parse("https://openweathermap.org/img/wn/10d@2x.png"));
+//                        binding.weatherIcon.setImageURI(Uri.parse("https://openweathermap.org/img/wn/10d@2x.png"));
                         Picasso.get().load(weatherIcon).into(binding.weatherIcon);
                     }
                 });

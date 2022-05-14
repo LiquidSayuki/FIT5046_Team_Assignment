@@ -37,4 +37,5 @@ public abstract class MealDatabase  extends RoomDatabase {
         return INSTANCE;
     }
 
+
 }

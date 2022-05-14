@@ -13,6 +13,9 @@ import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -68,10 +71,25 @@ public class ReportFragment extends Fragment {
                 Long startDate = rangeDate.first;
                 Long endDate = rangeDate.second;
                 GenerateReport(startDate, endDate);
+                binding.barChart.setVisibility(View.GONE);
             }
 
         });
+        binding.buttonBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.lineChart.setVisibility(View.GONE);
+                binding.barChart.setVisibility(View.VISIBLE);
+            }
+        });
 
+        binding.buttonLine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.barChart.setVisibility(View.GONE);
+                binding.lineChart.setVisibility(View.VISIBLE);
+            }
+        });
 
 //        binding.textReport.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -98,7 +116,8 @@ public class ReportFragment extends Fragment {
 
     private void generateReport(List<Meal> meals, long startDate, long endDate) {
         //Use entry to store the point which both types of attribute are float
-        List<Entry> mealList= new ArrayList<>();
+        List<Entry> mealList = new ArrayList<>();
+        List<BarEntry> barMealList = new ArrayList<>();
         //Check meal list size
         if (meals != null){
             for(int index = 0; index < meals.size(); index ++){
@@ -108,13 +127,16 @@ public class ReportFragment extends Fragment {
                         // records on same day
                         if (meals.get(index).getMealTime() == meals.get(index - 1).getMealTime()) {
                             mealList.get(mealList.size() - 1).setY(mealList.get(mealList.size() - 1).getY() + meals.get(index).getMealCalories());
+                            barMealList.get(barMealList.size() - 1).setY(barMealList.get(barMealList.size() - 1).getY() + meals.get(index).getMealCalories());
                         }
                         else {
                             mealList.add(new Entry(meals.get(index).getMealTime(), meals.get(index).getMealCalories()));
+                            barMealList.add(new BarEntry(meals.get(index).getMealTime(), meals.get(index).getMealCalories()));
                         }
                     }
                     else {
                         mealList.add(new Entry(meals.get(index).getMealTime(), meals.get(index).getMealCalories()));
+                        barMealList.add(new BarEntry(meals.get(index).getMealTime(), meals.get(index).getMealCalories()));
                     }
                 }
 
@@ -124,6 +146,7 @@ public class ReportFragment extends Fragment {
             }
             else{
                 generateLineChart(mealList);
+                generateBarChart(barMealList);
             }
         }
         // idea from https://learntodroid.com/how-to-display-a-line-chart-in-your-android-app/
@@ -134,10 +157,10 @@ public class ReportFragment extends Fragment {
 
     private void generateLineChart(List<Entry> mealList) {
         DateFormat formatter = new SimpleDateFormat("dd/MM");
-        LineDataSet lineDataSet = new LineDataSet(mealList, "Calories");
+        LineDataSet lineDataSet = new LineDataSet(mealList, "LineCalories");
         LineData lineData = new LineData(lineDataSet);
         binding.lineChart.setData(lineData);
-        binding.lineChart.setVisibility(View.VISIBLE);
+
 
         Description desc = new Description();
         desc.setText("Calories Report");
@@ -154,6 +177,28 @@ public class ReportFragment extends Fragment {
             }
         });
         binding.lineChart.invalidate();
+    }
+
+    private void generateBarChart(List<BarEntry> mealList) {
+        DateFormat formatter = new SimpleDateFormat("dd/MM");
+        BarDataSet barDataSet = new BarDataSet(mealList, "BarCalories");
+
+        XAxis xAxis = binding.barChart.getXAxis();
+        xAxis.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return formatter.format(value);
+            }
+        });
+        BarData barData = new BarData(barDataSet);
+        binding.barChart.setData(barData);
+        barData.setBarWidth(31536000.0f);
+
+        Description desc = new Description();
+        desc.setText("Calories Report");
+        desc.setTextSize(22);
+        binding.barChart.setDescription(desc);
+        binding.barChart.invalidate();
     }
 }
 
