@@ -13,12 +13,21 @@ import java.util.List;
 public class MealRepository {
     private MealDao mealDao;
     private LiveData<List<Meal>> allMeals;
+    private List<Meal> allMealsList;
+
+
 
     //Initialisation
     public MealRepository (Application application){
         MealDatabase db = MealDatabase.getInstance(application);
         mealDao =db.mealDao();
         allMeals = mealDao.getAllMeals();
+        allMealsList = mealDao.getMealList();
+    }
+
+    //get a list of meal
+    public List<Meal> getAllMealsList() {
+        return allMealsList;
     }
 
     //get all

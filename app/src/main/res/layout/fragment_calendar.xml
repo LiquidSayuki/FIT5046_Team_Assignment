@@ -6,22 +6,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_calendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is calendar"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/calender_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.Material3.Button"
-        android:text="SEE CALENDER"
-        tools:ignore="MissingConstraints" />
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:src="@drawable/ic_baseline_calendar_today_24"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="165dp"
+            tools:layout_editor_absoluteY="82dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Calender"
+            android:textColor="@color/light_black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            />
+
+        <Button
+            android:id="@+id/calender_button"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add your plan to calendar" />
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.teamliquid.volksfitness.fragment;
 
 
+import static com.mapbox.navigation.ui.utils.internal.extensions.DrawableExKt.getBitmap;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
@@ -9,7 +11,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -30,11 +31,20 @@ import com.mapbox.geojson.Point;
 import com.mapbox.maps.CameraOptions;
 import com.mapbox.maps.MapView;
 import com.mapbox.maps.Style;
+import com.mapbox.maps.plugin.annotation.AnnotationPlugin;
+import com.mapbox.maps.plugin.annotation.AnnotationPluginImplKt;
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager;
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManagerKt;
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions;
+import com.mapbox.maps.plugin.delegates.MapPluginProviderDelegate;
+
+import com.teamliquid.volksfitness.R;
 import com.teamliquid.volksfitness.databinding.FragmentMapBinding;
 
 public class MapFragment extends Fragment {
     private FragmentMapBinding binding;
     private MapView mapView;
+    private PointAnnotationManager pointAnnotationManager;
     private FusedLocationProviderClient fusedLocationClient;
 
     public MapFragment(){}
@@ -47,6 +57,10 @@ public class MapFragment extends Fragment {
         View view = binding.getRoot();
         mapView = binding.mapView;
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        // https://github.com/mapbox/mapbox-maps-android/issues/916
+        // Thanks for Karatuno providing the solution for mapBox V10's Java version of annotation
+        AnnotationPlugin annotationAPI = AnnotationPluginImplKt.getAnnotations((MapPluginProviderDelegate) mapView);
+        pointAnnotationManager = PointAnnotationManagerKt.createPointAnnotationManager(annotationAPI,mapView);
 
 
         // Check permission
@@ -110,6 +124,11 @@ public class MapFragment extends Fragment {
                             .zoom(14.0)
                             .center(point)
                             .build());
+
+                    PointAnnotationOptions pointAnnotationOptions = new PointAnnotationOptions()
+                            .withPoint(Point.fromLngLat(location.getLongitude(),location.getLatitude()))
+                            .withIconImage(getBitmap(getResources().getDrawable(R.drawable.ic_baseline_location_on_24)));
+                    pointAnnotationManager.create(pointAnnotationOptions);
                 }
             }
         });

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FIT5046_Team_Assignment/app/src/main/res/layout/activity_home.xml" value="0.17831813576494426" />
+        <entry key="..\:/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_add_calender.xml" value="0.36666666666666664" />
+        <entry key="..\:/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_add_meal.xml" value="0.17831813576494426" />
+        <entry key="..\:/FIT5046_Team_Assignment/app/src/main/res/layout/fragment_food_intake.xml" value="0.17831813576494426" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.155" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/drawable/common_background.xml" value="0.155" />
         <entry key="..\:/Study/androidProjects/FIT5046_Team_Assignment/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.155" />
