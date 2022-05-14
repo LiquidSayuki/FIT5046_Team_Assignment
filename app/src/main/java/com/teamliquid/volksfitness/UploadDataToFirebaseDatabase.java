@@ -31,7 +31,7 @@ public class UploadDataToFirebaseDatabase extends Worker {
         String dataTransfer = getInputData().getString("transfer");
         System.out.println(dataTransfer);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://fit5046-a61f5-default-rtdb.asia-southeast1.firebasedatabase.app");
         DatabaseReference reference = database.getReference("Meal");
 
         Gson gson = new Gson();
