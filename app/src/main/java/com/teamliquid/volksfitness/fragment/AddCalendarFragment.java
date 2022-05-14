@@ -15,6 +15,7 @@ import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClic
 import com.teamliquid.volksfitness.databinding.FragmentAddCalenderBinding;
 import com.teamliquid.volksfitness.databinding.FragmentAddMealBinding;
 
+import java.sql.SQLOutput;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,8 +44,8 @@ public class AddCalendarFragment extends Fragment {
         String date = formatter.format(datePicker.getSelection());
         binding.textDate.setText(date);
 
-        String frequency = binding.editFrequency.getText().toString();
-        String title = binding.editEventTitle.getText().toString();
+        String specTime = binding.editSpecifyTime.getText().toString();
+
 
 
         binding.buttonEventDate.setOnClickListener(new View.OnClickListener() {
@@ -71,14 +72,14 @@ public class AddCalendarFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                String title = binding.editEventTitle.getText().toString();
                 Calendar cal = Calendar.getInstance();
                 Intent intent = new Intent(Intent.ACTION_EDIT);
                 intent.setType("vnd.android.cursor.item/event");
-                System.out.println(binding.textDate.getText().toString());
+
 
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = null;
-                Date dateEnd = null;
                 try {
                     date = formatter.parse(binding.textDate.getText().toString());
 
@@ -88,7 +89,11 @@ public class AddCalendarFragment extends Fragment {
                 long millisStart = date.getTime();
                 long millisEnd = date.getTime() + 3600;
                 intent.putExtra("beginTime", millisStart);
-                intent.putExtra("allDay", true);
+                if(specTime.equals("y")||specTime.equals("Y"))
+                    intent.putExtra("allDay", true);
+                else
+                    intent.putExtra("allDay", false);
+
                 intent.putExtra("rrule","FREQ=DAILY");
                 intent.putExtra("endTime",millisEnd);
                 intent.putExtra("title", title);

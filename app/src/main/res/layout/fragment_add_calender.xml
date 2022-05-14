@@ -20,11 +20,11 @@
 
 
     <EditText
-        android:id="@+id/edit_frequency"
+        android:id="@+id/edit_specify_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed-light"
-        android:hint="Frequency(d/D for daily,y/Y for yearly)"
+        android:hint="Specify time in day?(y/n)"
         android:inputType="textAutoComplete"
         android:layout_margin="16dp"
         android:textSize="18sp" />

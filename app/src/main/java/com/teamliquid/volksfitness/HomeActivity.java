@@ -115,6 +115,7 @@ public class HomeActivity extends AppCompatActivity {
 
         WorkRequest saveRequest =
                 new PeriodicWorkRequest.Builder(UploadDataToFirebaseDatabase.class,
+                        1, TimeUnit.DAYS,
                         15, TimeUnit.MINUTES)
                         .setInputData(transferToManager)
                         .build();

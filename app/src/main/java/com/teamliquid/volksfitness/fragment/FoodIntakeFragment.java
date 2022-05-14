@@ -83,6 +83,7 @@ public class FoodIntakeFragment extends Fragment {
             }
         });
 
+        binding.floatAdd.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_add_meal_fragment,null));
 //        List<Meal> mMealList = mealViewModel.getMealList();
 //        Map<String,Meal> mealMap = new HashMap<>();
 //        for(Meal meal : mMealList)
